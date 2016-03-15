@@ -1,0 +1,7 @@
+js/lib/jquery/src
+js/lib/jquery/test
+js/lib/jquery/build
+js/lib/jquery/speed
+js/lib/**/*.md
+js/lib/**/*.txt
+js/lib/octicons/svg
