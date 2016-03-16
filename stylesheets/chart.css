@@ -1,6 +1,19 @@
 .chart-holder{
 	margin:0 auto;
 }
+
+@media screen and (min-width: 64em) {
+  .chart-title {
+    font-size: 3rem; } }
+
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .chart-title  {
+    font-size: 2rem; } }
+
+@media screen and (max-width: 42em) {
+  .chart-title  {
+    font-size: 1.5rem; } }
+
 .bar {
   fill: rgb(149,222,171);
 }

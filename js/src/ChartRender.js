@@ -17,8 +17,10 @@ define(function(){
 		if (chartOptions.data == null && chartOptions.dataCsv == null) {
 			return;
 		}
+		this._options = chartOptions;
 		if (chartOptions.title) {
-			var title = $('<h1>').html(chartOptions.title).css('margin-left',MARGIN.left).appendTo(this._dom$);
+			var title = $('<h1>').addClass('chart-title');
+			title.html(chartOptions.title).css('margin-left',MARGIN.left).appendTo(this._dom$);
 		}
 		var titleHeight = title ? title.height() : 0;
 		var width = this._dom$.width() - MARGIN.right - MARGIN.left;
@@ -121,5 +123,18 @@ define(function(){
 			});
 		}	
 	};
+
+	ChartRender.prototype.validateSize = function() {
+		this.destroy();
+		this.render(this._options);
+	};
+
+	ChartRender.prototype.destroy = function() {
+		this._dom$.children().remove();
+	}
+
+
+
+	
 	return ChartRender;
 })
