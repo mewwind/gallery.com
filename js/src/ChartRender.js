@@ -11,6 +11,8 @@ define(function(){
 		}
 		this._dom = div;
 		this._dom$ = $(div);
+		//calculate the height via width
+		this._options = null;
 	};
 
 	ChartRender.prototype.render = function(chartOptions) {
@@ -23,8 +25,8 @@ define(function(){
 			title.html(chartOptions.title).css('margin-left',MARGIN.left).appendTo(this._dom$);
 		}
 		var titleHeight = title ? title.height() : 0;
-		var width = this._dom$.width() - MARGIN.right - MARGIN.left;
-		var height = this._dom$.height() - MARGIN.top - MARGIN.bottom - titleHeight;
+		var width = chartOptions.size.width - MARGIN.right - MARGIN.left;
+		var height = chartOptions.size.height - MARGIN.top - MARGIN.bottom - titleHeight;
 		var x = d3.scale.ordinal()
 			.rangeRoundBands([0, width], .1);
 		var y = d3.scale.linear()
@@ -41,7 +43,7 @@ define(function(){
 		  .attr('class', 'd3-tip')
 		  .offset([-10, 0])
 		  .html(function(d) {
-		    return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+		    return "<strong>Frequency:</strong>" + d.frequency + "</span>";
 		  })
 
 		var svg = d3.select(this._dom).append('svg')
@@ -124,13 +126,16 @@ define(function(){
 		}	
 	};
 
-	ChartRender.prototype.validateSize = function() {
-		this.destroy();
-		this.render(this._options);
+	ChartRender.prototype.size = function(size) {
+		if (this._options && size) {
+			this._dom$.children().remove();
+			this._options.size = size;
+			this.render(this._options);
+		}
 	};
 
 	ChartRender.prototype.destroy = function() {
-		this._dom$.children().remove();
+		
 	}
 
 
