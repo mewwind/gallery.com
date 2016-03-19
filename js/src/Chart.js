@@ -1,22 +1,30 @@
-define(["ChartRender"],
-function(ChartRender) {
+define(["ChartRender",
+	"GeoChartRender"],
+function(ChartRender, GeoChartRender) {
 	var Chart = function(div, uiConfig) {
 		this._dom = div;
 		this._dom$ = $(div);
 		this._uiConfig = uiConfig;
-		this._createRender();
 	};
 
-	Chart.prototype._createRender = function() {
-		this._chartRender = new ChartRender(this._dom);
+	Chart.prototype._createRender = function(type) {
+		if (!type) {
+			return;
+		}
+		if (type === 'chart') {
+			this._chartRender = new ChartRender(this._dom);
+		} else if (type === 'geomap') {
+			this._chartRender = new GeoChartRender(this._dom);
+		}
 	};
 
 	Chart.prototype.render = function(options) {
+		this._createRender(options.type);
 		if (this._chartRender) {
 			var size = this._calculateSize();
 			options.size = size;
 			this._chartRender.render(options);
-		}
+		}		
 	};
 
 	Chart.prototype.validateSize = function() {
@@ -37,7 +45,7 @@ function(ChartRender) {
 	};
 
 	Chart.prototype.destroy = function() {
-
+		this._chartRender.destroy();
 	};
 	return Chart;
 });

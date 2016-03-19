@@ -135,7 +135,7 @@ define(function(){
 	};
 
 	ChartRender.prototype.destroy = function() {
-		
+		this._dom$.children().remove();
 	}
 
 
