@@ -1,5 +1,32 @@
 .chart-holder{
-	margin:0 auto;
+	margin-left:10px;
+  width:80%;
+  float:left;
+}
+.nav-menu{
+  float:left;
+  padding:5px;
+}
+.nav-menu div{
+  width:60px;
+  padding:10px;
+  text-align:center;
+  box-shadow: 1px 1px 3px #ddd;
+  cursor: pointer;
+}
+.nav-item-highlight{
+    background-color:#F0FFFF;
+}
+.chart-controller{
+  overflow: hidden
+}
+.octicon-nav{
+  font-size:30px;
+  color:#7FDFFF;
+}
+.octicon-nav:hover{
+  font-size:32px;
+  color:#2BAFC2;
 }
 
 @media screen and (min-width: 64em) {
