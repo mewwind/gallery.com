@@ -128,7 +128,7 @@ define(function(){
 
 	ChartRender.prototype.size = function(size) {
 		if (this._options && size) {
-			this._dom$.children().remove();
+			this.destroy();
 			this._options.size = size;
 			this.render(this._options);
 		}

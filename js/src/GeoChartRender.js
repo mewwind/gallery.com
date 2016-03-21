@@ -1,4 +1,6 @@
 define(function(){
+	//the index indicates the scale-to-width ratio.
+	INDEX = 0.85;
 	var GeoChartRender = function(div) {
 		if (div == null) {
 			throw new Error("div param is required in constructor of GeoChartRender.");
@@ -12,6 +14,7 @@ define(function(){
 		if (chartOptions.geojson == null) {
 			return;
 		}
+		this._options = chartOptions;
 		var width = this._dom$.width();
 		var height = this._dom$.height();
 		var svg = d3.select(this._dom).append("svg")
@@ -20,9 +23,10 @@ define(function(){
 		    .append("g")
 		    .attr("transform", "translate(0,0)");
 		
+		var scale = width * INDEX;
 		var projection = d3.geo.mercator()
-							.center([107, 37])
-							.scale(400)
+							.center([107, 39])
+							.scale(scale)
 	    					.translate([width/2, height/2]);
 		
 		var path = d3.geo.path()
@@ -61,6 +65,14 @@ define(function(){
 	}
 	GeoChartRender.prototype.destroy = function() {
 		this._dom$.children().remove();
+	};
+
+	GeoChartRender.prototype.size = function(size) {
+		if (this._options && size) {
+			this.destroy();
+			this._options.size = size;
+			this.render(this._options);
+		}
 	};
 
 	return GeoChartRender;
