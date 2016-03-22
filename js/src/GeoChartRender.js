@@ -35,7 +35,14 @@ define(function(){
 		
 		var color = d3.scale.category20();
 		
-		
+		var tip = d3.tip()
+		  .attr('class', 'd3-tip')
+		  .offset([-10, 0])
+		  .html(function(d) {
+		    return d.properties.name + "</span>";
+		  })
+
+		svg.call(tip);
 		d3.json(chartOptions.geojson, function(error, root) {
 			
 			if (error) 
@@ -55,6 +62,7 @@ define(function(){
 				.on("mouseover",function(d,i){
 	                d3.select(this)
 	                    .attr("fill","yellow");
+	                tip.show(d);
 	            })
 	            .on("mouseout",function(d,i){
 	                d3.select(this)
