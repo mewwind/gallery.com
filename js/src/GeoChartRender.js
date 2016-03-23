@@ -36,8 +36,7 @@ define(function(){
 		var color = d3.scale.category20();
 		
 		var tip = d3.tip()
-		  .attr('class', 'd3-tip')
-		  .offset([-10, 0])
+		  .attr('class', 'd3-geotip')
 		  .html(function(d) {
 		    return d.properties.name + "</span>";
 		  })
@@ -62,14 +61,55 @@ define(function(){
 				.on("mouseover",function(d,i){
 	                d3.select(this)
 	                    .attr("fill","yellow");
+	                var coord = d3.mouse(this);
+	                var BBox = d3.select(this).node().getBBox();
+
+	                var offset = calculateTooltipOffset(coord, BBox);
+	              	tip.offset([offset.top, offset.left]);
+
 	                tip.show(d);
+	            })
+	            .on("mousemove", function(d, i){
+	            	tip.hide(d);
+	            	var coord = d3.mouse(this);
+	                var BBox = d3.select(this).node().getBBox();
+
+	                var offset = calculateTooltipOffset(coord, BBox);
+	              	tip.offset([offset.top, offset.left]);
+	            	tip.show(d);
 	            })
 	            .on("mouseout",function(d,i){
 	                d3.select(this)
 	                    .attr("fill",color(i));
+	                tip.hide(d);
+	            })
+	            .on("click", function(d,i){
+	            	d3.selectAll('path').style('opacity', '0.5');
+	            	d3.select(this)
+	            		.transition()
+	            		.duration(500)
+	            		.attr('fill', 'red')
+	            		.style('opacity', '1');
+	            	d3.event.stopPropagation();
 	            });
-			
+	     	d3.select('.main-content').on('click', function() {
+	     		d3.selectAll('path').style('opacity', '1');
+	     	});			
 		});		
+	}
+	function calculateTooltipOffset(mousePos, nodeBBox) {
+		var x = mousePos[0];
+		var y = mousePos[1];
+		var bx = nodeBBox.x;
+		var by = nodeBBox.y;
+		var height = nodeBBox.height;
+	    var width = nodeBBox.width;
+	    var calculatedX = x - bx - 0.5 * width;
+	    var calculatedY = y - by;
+	    return {
+	    	top: calculatedY - 10,
+	    	left: calculatedX
+	    };
 	}
 	GeoChartRender.prototype.destroy = function() {
 		this._dom$.children().remove();
