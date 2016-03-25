@@ -4,4 +4,9 @@ js/lib/jquery/build
 js/lib/jquery/speed
 js/lib/**/*.md
 js/lib/**/*.txt
+js/lib/bootstrap/fonts
+js/lib/bootstrap/grunt
+js/lib/bootstrap/js
+js/lib/bootstrap/less
+js/lib/bootstrap/nuget
 js/lib/octicons/svg

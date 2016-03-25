@@ -60,7 +60,7 @@ define(function(){
 				.attr("d", path )
 				.on("mouseover",function(d,i){
 	                d3.select(this)
-	                    .attr("fill","yellow");
+	                    .attr("fill","deeppink");
 	                var coord = d3.mouse(this);
 	                var BBox = d3.select(this).node().getBBox();
 
@@ -84,11 +84,11 @@ define(function(){
 	                tip.hide(d);
 	            })
 	            .on("click", function(d,i){
-	            	d3.selectAll('path').style('opacity', '0.5');
+	            	d3.selectAll('path').style('opacity', '0.3');
 	            	d3.select(this)
 	            		.transition()
 	            		.duration(500)
-	            		.attr('fill', 'red')
+	            		.attr('fill', color(i))
 	            		.style('opacity', '1');
 	            	d3.event.stopPropagation();
 	            });
