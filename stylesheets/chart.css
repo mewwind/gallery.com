@@ -23,6 +23,10 @@
   color:#2BAFC2;
 }
 
+.table-container{
+  float:left;
+}
+
 
 @media screen and (min-width: 64em) {
   .chart-title {

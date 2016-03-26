@@ -86,10 +86,11 @@ define(function(){
 	            .on("click", function(d,i){
 	            	d3.selectAll('path').style('opacity', '0.3');
 	            	d3.select(this)
+	            		.style('opacity', '1')
 	            		.transition()
 	            		.duration(500)
-	            		.attr('fill', color(i))
-	            		.style('opacity', '1');
+	            		.attr('fill', '#CC026F');
+	            		
 	            	d3.event.stopPropagation();
 	            });
 	     	d3.select('.main-content').on('click', function() {

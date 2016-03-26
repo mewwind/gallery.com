@@ -1,9 +1,17 @@
 require.config({
 	baseUrl: "js/src"
 });
-require(['Chart'],
-function(Chart) {
+require(['Chart', 'Table'],
+function(Chart, Table) {
 
+
+	var tableContainer$ = $('.table-container');
+
+	var tableOptions = {
+		dataCsv: "resources/data.csv"
+	};
+	var table = new Table(tableContainer$[0]);
+	table.render(tableOptions);
 
 	var chartContainer$ = $('.chart-holder');
 
