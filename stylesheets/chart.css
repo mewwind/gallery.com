@@ -4,10 +4,14 @@
   float:left;
 }
 .nav-menu{
-  float:left;
   padding:5px;
+  overflow:hidden;
+  margin-left:190px;
+  margin-bottom:20px;
 }
 .nav-menu div{
+  float:left;
+  height:100%;
   text-align:center;
   box-shadow: 1px 1px 3px #ddd;
   cursor: pointer;
@@ -22,18 +26,15 @@
 .octicon-nav:hover{
   color:#2BAFC2;
 }
-
 .table-container{
   float:left;
 }
-
-
 @media screen and (min-width: 64em) {
   .chart-title {
     font-size: 3rem; 
   } 
   .nav-menu div{
-    width:60px;
+    width:100px;
     padding:10px;
   }
   .octicon-nav{
@@ -43,6 +44,9 @@
   .octicon-nav:hover{
     font-size:2.2rem;
   }
+  .table-style{
+    font-size:2rem;
+  }
 
 }
 
@@ -51,7 +55,7 @@
     font-size: 2rem; 
   } 
   .nav-menu div{
-    width:40px;
+    width:80px;
     padding:8px;
   }
   .octicon-nav{
@@ -59,6 +63,9 @@
     color:#7FDFFF;
   }
   .octicon-nav:hover{
+    font-size:1.6rem;
+  }
+  .table-style{
     font-size:1.6rem;
   }
 
@@ -69,7 +76,7 @@
     font-size: 1.5rem; 
   } 
   .nav-menu div{
-    width:28px;
+    width:60px;
     padding:5px;
     line-height:normal;
   }
@@ -80,6 +87,10 @@
   .octicon-nav:hover{
     font-size:1.1rem;
   }
+  .table-style{
+    font-size:1.2rem;
+  }
+
 
 }
 

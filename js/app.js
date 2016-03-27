@@ -4,7 +4,6 @@ require.config({
 require(['Chart', 'Table'],
 function(Chart, Table) {
 
-
 	var tableContainer$ = $('.table-container');
 
 	var tableOptions = {
