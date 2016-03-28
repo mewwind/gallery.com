@@ -11,7 +11,7 @@ define(function() {
 
 	Table.prototype.init = function() {
 		this._table = $('<div>').addClass('table table-hover table-style').appendTo(this._dom$);
-		this._table.append('<h2 class=chart-title>Chart Data');
+		this._table.append('<h2 class="table-title chart-title">Chart Data');
 	};
 
 	function createHead(data, table) {

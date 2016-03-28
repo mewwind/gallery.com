@@ -6,28 +6,37 @@
 .nav-menu{
   padding:5px;
   overflow:hidden;
-  margin-left:190px;
   margin-bottom:20px;
+  margin-left:40px;
 }
 .nav-menu div{
   float:left;
-  height:100%;
   text-align:center;
   box-shadow: 1px 1px 3px #ddd;
   cursor: pointer;
 }
 
 .nav-item-highlight{
-    background-color:#F0FFFF;
+  background-color:#F0FFFF;
 }
 .chart-controller{
   overflow: hidden
 }
+.octicon-nav{
+  width:100%;
+  height:100%;
+}
 .octicon-nav:hover{
-  color:#2BAFC2;
+  color:#FFF;
+  background-color:#7FDFFF;
 }
 .table-container{
   float:left;
+  padding:80px 50px 20px 70px;
+}
+.table-title{
+    color:#C341AB!important;
+    margin-bottom:30px!important;
 }
 @media screen and (min-width: 64em) {
   .chart-title {
@@ -35,15 +44,12 @@
   } 
   .nav-menu div{
     width:100px;
-    padding:10px;
   }
   .octicon-nav{
-    font-size:2rem;
+    font-size:3rem;
     color:#7FDFFF;
-  }
-  .octicon-nav:hover{
-    font-size:2.2rem;
-  }
+    padding:10px;
+  } 
   .table-style{
     font-size:2rem;
   }
@@ -56,14 +62,11 @@
   } 
   .nav-menu div{
     width:80px;
-    padding:8px;
   }
   .octicon-nav{
-    font-size:1.5rem;
+    font-size:2.5rem;
     color:#7FDFFF;
-  }
-  .octicon-nav:hover{
-    font-size:1.6rem;
+    padding:8px;
   }
   .table-style{
     font-size:1.6rem;
@@ -77,17 +80,14 @@
   } 
   .nav-menu div{
     width:60px;
-    padding:5px;
     line-height:normal;
   }
   .octicon-nav{
-    font-size:1rem;
+    font-size:2rem;
     color:#7FDFFF;
+    padding:5px;
   }
-  .octicon-nav:hover{
-    font-size:1.1rem;
-  }
-  .table-style{
+   .table-style{
     font-size:1.2rem;
   }
 
